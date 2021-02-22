@@ -1,70 +1,41 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    # Sistema de Gerenciamento de Ordens de Serviço
+    ## Rastreagro
+    
+    Feito com / Made With 
+    [![ReactJS](https://miro.medium.com/max/200/1*vj_VVGBUs-K9NksbZjdeeg.png)](https://reactjs.org)
+    
+    ## Objetivo
+    
+    Projetar e implementar uma interface para o lançamento das fichas de campo por parte do técnico. 
+    Lembre-se que ele precisará lançar centenas de fichas em um só dia, então cuide para fornecer algumas 
+    características importantes,como: usabilidade, facilidade, rapidez, simplicidade, beleza e se possível, 
+    responsividade. Para as vagas de front-end, não esperamos nenhum tipo de interação com servidores,
+    esperamos arquivos estáticos como HTML, CSS e JavaScript, que podem ser gerados a partir de algum
+    framework ou biblioteca de sua preferência (Angular, React, Vue). Favor incluir bibliotecas e arquivos
+    json ou xml quando necessário.
+    
+    ## Installation
+    
+    Este projeto necessita do [Node.js](https://nodejs.org/) v10+ para rodar.
+    
+    ```sh
+    cd rastreagro-frontend
+    npm i
+    npm start
+    ```
+    
+    ## Imagens do Projeto
+    
+    ### PC
+    
+    ![Tela Principal](https://i.imgur.com/gx9cN9E.png)
+    ![Menu](https://i.imgur.com/ic9bKXr.png)
+    ![Nova OS](https://i.imgur.com/LWOsXq6.png)
+    ![Sucesso](https://i.imgur.com/0A4madl.png)
+    ![Listar OS's](https://i.imgur.com/GVEOQxT.png)
+    ### Mobile
+    ![Tela Principal Mobile](https://i.imgur.com/9w8eR80.png)
+    ![Menu Mobile](https://i.imgur.com/0ZTtNCh.png)
+    ![Nova OS Mobile](https://i.imgur.com/C7jhG9p.png)
+    ![Sucesso Mobile](https://i.imgur.com/0I3yX4i.png)
+    ![Lista OS Mobile](https://i.imgur.com/eS36LuQ.png)

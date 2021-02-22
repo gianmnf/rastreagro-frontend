@@ -24,7 +24,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import { FixedSizeList } from "react-window";
 import PropTypes from "prop-types";
 import Swal from "sweetalert2";
-import fundo from "./images/background-new.jpg";
 
 const useStyles = makeStyles((theme) => ({
   chips: {
@@ -34,9 +33,9 @@ const useStyles = makeStyles((theme) => ({
   chip: {
     margin: 2,
   },
-  root: {
-    backgroundColor: 'lightgreen',
-  },
+  button: {
+    marginBottom: 3,
+  }
 }));
 
 function renderRow(props) {
@@ -56,6 +55,7 @@ function renderRow(props) {
   );
 }
 
+// Definindo propriedades padrão
 renderRow.propTypes = {
   index: PropTypes.number.isRequired,
   style: PropTypes.object.isRequired,
@@ -73,15 +73,21 @@ const MenuProps = {
   },
 };
 
+//Função para alertar quando houver um clique no botão Salvar
 function alertaSucesso() {
   Swal.fire({
     title: "Sucesso",
     text: "OS cadastrada com sucesso, redirecionando para página principal!",
     icon: "success",
     confirmButtonText: "OK",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = '/';
+    }
   });
 }
 
+// Visualização Principal
 export default function NewOS() {
   const classes = useStyles();
 
@@ -169,18 +175,18 @@ export default function NewOS() {
                 }}
               />
         </MuiPickersUtilsProvider>
-        <TextField id="standard-name" label="Local:" />
-        <TextField id="standard-name" label="Máquina:" />
-        <TextField id="standard-name" label="Implemento:" />
+        <TextField id="local" label="Local:" />
+        <TextField id="maquina" label="Máquina:" />
+        <TextField id="implemento" label="Implemento:" />
         <br />
-        <InputLabel id="demo-mutiple-chip-label">Operadores</InputLabel>
+        <InputLabel id="operadores">Operadores</InputLabel>
         <Select
-          labelId="demo-mutiple-chip-label"
-          id="demo-mutiple-chip"
+          labelId="operadores"
+          id="select-operadores"
           multiple
           value={operadores}
           onChange={handleOperadores}
-          input={<Input id="select-multiple-chip" />}
+          input={<Input id="select-operadores" />}
           renderValue={(selected) => (
             <div className={classes.chips}>
               {selected.map((value) => (
@@ -215,7 +221,7 @@ export default function NewOS() {
             </IconButton>
           )}
         </h4>
-        <FixedSizeList height={200} width={300} itemSize={46} itemCount={count}>
+        <FixedSizeList height={140} width={300} itemSize={46} itemCount={count}>
           {renderRow}
         </FixedSizeList>
         <Button
