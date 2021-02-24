@@ -23,8 +23,8 @@ const useRowStyles = makeStyles({
     },
   },
   titulo: {
-      textAlign: 'center',
-  }
+    textAlign: "center",
+  },
 });
 
 // Função para Retornar os Dados
@@ -202,7 +202,7 @@ const colunas = [
 
 // Visualização Principal
 export default function ViewOS() {
-    const classes = useRowStyles();
+  const classes = useRowStyles();
   return (
     <>
       <h3 className={classes.titulo}>Lista de Ordens de Serviço</h3>

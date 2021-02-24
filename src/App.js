@@ -1,11 +1,18 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Typography, Button, Menu, MenuItem } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Menu,
+  MenuItem,
+} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import logo from "./logo.png";
-import './App.css';
-import Routes from './Routes';
+import "./App.css";
+import Routes from "./Routes";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     backgroundColor: "lightblue",
-  }
+  },
 }));
 
 export default function App() {

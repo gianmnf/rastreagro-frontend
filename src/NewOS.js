@@ -3,15 +3,26 @@ import "moment/locale/pt-br";
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
-import MomentUtils from '@date-io/moment';
+import MomentUtils from "@date-io/moment";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-import {Chip, Input, InputLabel, Select, MenuItem, Grid, Button, IconButton, ListItem, InputAdornment} from "@material-ui/core";
+import {
+  Chip,
+  Input,
+  InputLabel,
+  Select,
+  MenuItem,
+  Grid,
+  Button,
+  IconButton,
+  ListItem,
+  InputAdornment,
+} from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
-import {Save, Delete} from "@material-ui/icons";
+import { Save, Delete } from "@material-ui/icons";
 import { FixedSizeList } from "react-window";
 import PropTypes from "prop-types";
 import Swal from "sweetalert2";
@@ -133,12 +144,7 @@ export default function NewOS() {
       >
         <h2>Nova OS</h2>
         <Grid item xs={12}>
-          <TextField
-            id="standard-name"
-            label="OS:"
-            value={os}
-            disabled
-          />
+          <TextField id="standard-name" label="OS:" value={os} disabled />
         </Grid>
 
         <MuiPickersUtilsProvider utils={MomentUtils} locale="pt-br">
