@@ -1,30 +1,25 @@
-import "date-fns";
+import moment from "moment";
+import "moment/locale/pt-br";
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
-import DateFnsUtils from "@date-io/date-fns";
+import MomentUtils from '@date-io/moment';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-import Chip from "@material-ui/core/Chip";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
+import {Chip, Input, InputLabel, Select, MenuItem, Grid, Button, IconButton, ListItem, InputAdornment} from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
-import SaveIcon from "@material-ui/icons/Save";
-import DeleteIcon from "@material-ui/icons/Delete";
-import IconButton from "@material-ui/core/IconButton";
-import ListItem from "@material-ui/core/ListItem";
-import InputAdornment from "@material-ui/core/InputAdornment";
+import {Save, Delete} from "@material-ui/icons";
 import { FixedSizeList } from "react-window";
 import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 
+// Definindo idioma padrão do componente de Data
+moment.locale("pt-br");
+
+// Estilos padrões
 const useStyles = makeStyles((theme) => ({
   chips: {
     display: "flex",
@@ -35,9 +30,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginBottom: 3,
-  }
+  },
 }));
 
+// Função para renderizar coluna
 function renderRow(props) {
   const { index, style } = props;
 
@@ -82,7 +78,7 @@ function alertaSucesso() {
     confirmButtonText: "OK",
   }).then((result) => {
     if (result.isConfirmed) {
-      window.location.href = '/';
+      window.location.href = "/";
     }
   });
 }
@@ -96,6 +92,7 @@ export default function NewOS() {
   const [horaFim, setHoraFim] = React.useState();
   const [operadores, setOperadores] = React.useState([]);
   const [count, setCount] = React.useState(1);
+  const [os] = React.useState(Math.floor(Math.random(6) * Math.floor(999999)));
 
   const handleData = (data) => {
     setDataSelecionada(data);
@@ -113,6 +110,7 @@ export default function NewOS() {
     setOperadores(event.target.value);
   };
 
+  // Opções para o select de Operadores
   const Operadores = [
     "Antônio Marcos",
     "Bruna Filgueira",
@@ -135,67 +133,86 @@ export default function NewOS() {
       >
         <h2>Nova OS</h2>
         <Grid item xs={12}>
-          <TextField id="standard-name" label="OS:" value={Math.floor(Math.random(6) * Math.floor(999999))} disabled />
+          <TextField
+            id="standard-name"
+            label="OS:"
+            value={os}
+            disabled
+          />
         </Grid>
 
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                disableToolbar
-                variant="inline"
-                format="dd/MM/yy"
-                margin="normal"
-                id="date-picker-inline"
-                label="Data"
-                value={dataSelecionada}
-                onChange={handleData}
-                KeyboardButtonProps={{
-                  "aria-label": "change date",
-                }}
-              />
-              <KeyboardTimePicker
-                margin="normal"
-                id="inicio"
-                label="Início"
-                ampm={false}
-                value={horaInicio}
-                onChange={handleHoraInicio}
-                KeyboardButtonProps={{
-                  "aria-label": "change time",
-                }}
-              />
-              <KeyboardTimePicker
-                margin="normal"
-                id="fim"
-                label="Fim"
-                ampm={false}
-                value={horaFim}
-                onChange={handleHoraFim}
-                KeyboardButtonProps={{
-                  "aria-label": "change time",
-                }}
-              />
+        <MuiPickersUtilsProvider utils={MomentUtils} locale="pt-br">
+          <KeyboardDatePicker
+            disableToolbar
+            required
+            variant="inline"
+            format="DD/MM/YY"
+            margin="normal"
+            id="date-picker-inline"
+            label="Data"
+            value={dataSelecionada}
+            onChange={handleData}
+            KeyboardButtonProps={{
+              "aria-label": "alterar data",
+            }}
+          />
+          <KeyboardTimePicker
+            margin="normal"
+            id="inicio"
+            label="Início"
+            required
+            ampm={false}
+            value={horaInicio}
+            onChange={handleHoraInicio}
+            KeyboardButtonProps={{
+              "aria-label": "alterar hora ínicio",
+            }}
+          />
+          <KeyboardTimePicker
+            margin="normal"
+            id="fim"
+            label="Fim"
+            required
+            ampm={false}
+            value={horaFim}
+            onChange={handleHoraFim}
+            KeyboardButtonProps={{
+              "aria-label": "alterar hora fim",
+            }}
+          />
         </MuiPickersUtilsProvider>
-        <TextField id="local" label="Local:" />
-        <TextField id="maquina" label="Máquina:" />
-        <TextField id="implemento" label="Implemento:" />
+        <TextField id="local" label="Local:" required />
+        <TextField id="maquina" label="Máquina:" required />
+        <TextField id="implemento" label="Implemento:" required />
         <br />
-        <InputLabel id="operadores">Operadores</InputLabel>
+        <InputLabel id="operadores-label">Operadores</InputLabel>
         <Select
-          labelId="operadores"
+          labelId="operadores-label"
           id="select-operadores"
           multiple
           value={operadores}
           onChange={handleOperadores}
           input={<Input id="select-operadores" />}
-          renderValue={(selected) => (
-            <div className={classes.chips}>
-              {selected.map((value) => (
-                <Chip key={value} label={value} className={classes.chip} />
-              ))}
-            </div>
-          )}
+          displayEmpty
+          required
+          renderValue={(selected) => {
+            if (selected.length === 0) {
+              return <em>Selecione os operadores</em>;
+            }
+
+            return (
+              <div className={classes.chips}>
+                {selected.map((value) => (
+                  <Chip key={value} label={value} className={classes.chip} />
+                ))}
+              </div>
+            );
+          }}
           MenuProps={MenuProps}
         >
+          <MenuItem disabled value="">
+            <em>Selecione os operadores</em>
+          </MenuItem>
           {Operadores.map((operador) => (
             <MenuItem key={operador} value={operador}>
               {operador}
@@ -217,7 +234,7 @@ export default function NewOS() {
               className={classes.margin}
               onClick={() => setCount(count - 1)}
             >
-              <DeleteIcon fontSize="small" />
+              <Delete fontSize="small" />
             </IconButton>
           )}
         </h4>
@@ -227,7 +244,7 @@ export default function NewOS() {
         <Button
           variant="contained"
           className={classes.button}
-          startIcon={<SaveIcon />}
+          startIcon={<Save />}
           onClick={alertaSucesso}
         >
           Salvar
